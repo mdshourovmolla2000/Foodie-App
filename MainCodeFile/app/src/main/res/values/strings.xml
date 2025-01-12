@@ -1,3 +1,67 @@
 <resources>
     <string name="app_name">Foodie</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="terms_and_conditions">
+        Welcome to [App Name]! Please read these terms and conditions carefully before using our services.\n\n
+    1. Acceptance of Terms\n
+    By using our app, you agree to these Terms and Conditions. If you do not agree, please do not use the app.\n\n
+    2. Eligibility\n
+    You must be at least 18 years old to create an account and use our services. By creating an account, you confirm that you meet this age requirement.\n\n
+    3. User Responsibilities\n
+    - Provide accurate and up-to-date information during registration.\n
+    - Keep your account credentials secure and confidential.\n
+    - Notify us immediately if you suspect unauthorized use of your account.\n\n
+    4. Order Placement and Cancellation\n
+    - Orders placed through the app are subject to acceptance by the restaurant.\n
+    - Cancellation policies may vary depending on the restaurant\'s terms.\n
+    - Refunds for canceled orders will follow the refund policy specified in the app.\n\n
+    5. Delivery Terms\n
+    - Delivery times are estimates and may vary due to unforeseen circumstances.\n
+    - Ensure someone is available to receive the order at the provided delivery address.\n\n
+    6. Payment\n
+    - All payments must be made through the app using the available payment methods.\n
+    - Prices are subject to change without prior notice.\n\n
+    7. Intellectual Property\n
+    All content in the app, including text, graphics, logos, and images, is the property of [App Name] and is protected by copyright laws.\n\n
+    8. Liability Limitation\n
+    We are not responsible for:\n
+    - Delays or failures in delivery caused by third parties.\n
+    - Food quality or hygiene issues.\n
+    - Losses arising from unauthorized account access.\n\n
+    9. Changes to Terms\n
+    We reserve the right to modify these terms at any time. Updates will be posted in the app, and continued use of the app constitutes acceptance of the updated terms.\n\n
+    10. Contact Us\n
+    If you have any questions about these Terms and Conditions, please contact us at support@[yourappdomain].com.
+</string>
+
+    <string name="privacy_policy">
+    Your privacy is important to us. Please read our Privacy Policy carefully to understand how we collect, use, and protect your personal information.\n\n
+    1. Information We Collect\n
+    - Personal information such as name, email address, and phone number.\n
+    - Payment details for order processing.\n
+    - Location data for delivery purposes.\n
+    - Usage data such as app interactions and preferences.\n\n
+    2. How We Use Your Information\n
+    - To process your orders and provide delivery services.\n
+    - To improve our app functionality and user experience.\n
+    - To send promotional offers, updates, and notifications.\n
+    - To comply with legal obligations and prevent fraud.\n\n
+    3. Sharing of Information\n
+    - We may share your information with trusted third-party partners, such as delivery personnel and payment processors.\n
+    - Your data will not be sold or shared with unauthorized parties.\n\n
+    4. Data Security\n
+    - We implement advanced security measures to protect your data.\n
+    - However, no method of transmission over the Internet is completely secure, and we cannot guarantee absolute security.\n\n
+    5. Your Rights\n
+    - You can access, update, or delete your personal information by contacting us.\n
+    - You can opt-out of receiving promotional messages at any time.\n\n
+    6. Changes to This Policy\n
+    - We may update this Privacy Policy from time to time.\n
+    - Continued use of the app constitutes acceptance of the updated policy.\n\n
+    7. Contact Us\n
+    If you have any questions or concerns about our Privacy Policy, please contact us at support@[yourappdomain].com.
+</string>
+
 </resources>

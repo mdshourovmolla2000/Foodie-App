@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.authPage.AuthFragment">
+
+    <RelativeLayout
+        android:id="@+id/topSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/auth_page_bg"
+            android:adjustViewBounds="true"/>
+
+        <ImageView
+            android:layout_width="@dimen/_130sdp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/app_logo"
+            android:adjustViewBounds="true"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/topSection"
+        android:padding="@dimen/_12sdp">
+
+        <TextView
+            android:id="@+id/wlcTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome"
+            android:textColor="@color/themeColor"
+            android:textSize="@dimen/_20sdp"
+            android:fontFamily="@font/nort"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+            android:textColor="@color/grayColor"
+            android:textSize="@dimen/_16sdp"
+            android:fontFamily="@font/nort"
+            android:layout_below="@id/wlcTextview"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_12sdp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textColor="@color/whiteColor"
+            android:textSize="@dimen/_15sdp"
+            android:fontFamily="@font/nort"
+            app:backgroundTint="@color/themeColor"
+            app:cornerRadius="@dimen/_10sdp"
+            android:insetBottom="0dp"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:insetTop="0dp"
+            android:padding="@dimen/_12sdp"
+            android:layout_above="@id/signupButton"
+            android:layout_marginBottom="@dimen/_12sdp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signupButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign up"
+            android:textColor="@color/themeColor"
+            android:textSize="@dimen/_15sdp"
+            android:fontFamily="@font/nort"
+            app:backgroundTint="@color/whiteColor"
+            app:strokeColor="@color/themeColor"
+            app:strokeWidth="@dimen/_1sdp"
+            app:cornerRadius="@dimen/_10sdp"
+            android:insetBottom="0dp"
+            android:insetLeft="0dp"
+            android:insetRight="0dp"
+            android:insetTop="0dp"
+            android:padding="@dimen/_12sdp"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
