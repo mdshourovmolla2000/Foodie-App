@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".views.authPage.forgotPasswordPage.ForgotPasswordFragment"
+    tools:context=".views.authPage.forgotPasswordPage.VerificationFragment"
     android:orientation="vertical"
     android:padding="@dimen/_12sdp">
 
@@ -33,14 +33,14 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/forgot_password"
+        android:src="@drawable/forgot_password_verification"
         android:adjustViewBounds="true"
         android:layout_margin="@dimen/_30sdp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Forgot Password"
+        android:text="Verification"
         android:textColor="@color/themeColor"
         android:textSize="@dimen/_20sdp"
         android:fontFamily="@font/nort"
@@ -50,27 +50,37 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your registered email"
+        android:text="Enter the verification code sent to your email"
         android:textColor="@color/grayColor"
         android:textSize="@dimen/_16sdp"
         android:fontFamily="@font/nort"
         android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
         android:layout_marginTop="@dimen/_8sdp"/>
 
-    <EditText
-        android:id="@+id/emailEdittext"
-        android:layout_width="match_parent"
+    <com.chaos.view.PinView
+        android:id="@+id/pinView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittext_bg"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:clickable="true"
+        android:layout_gravity="center_horizontal"
+        android:cursorVisible="true"
         android:layout_marginTop="@dimen/_30sdp"
-        android:hint="Email"
-        android:textColorHint="@color/edittextHintColor"
-        android:padding="@dimen/_15sdp"
+        android:inputType="number"
         android:textColor="@color/blackColor"
-        android:textSize="@dimen/_16sdp"
-        android:fontFamily="@font/nort"
-        android:inputType="textEmailAddress"
-        android:maxLines="1"/>
+        android:textSize="@dimen/_14sdp"
+        app:cursorColor="@color/grayColor"
+        app:cursorWidth="@dimen/_2sdp"
+        app:hideLineWhenFilled="true"
+        app:itemCount="4"
+        app:itemHeight="@dimen/_40sdp"
+        app:itemWidth="@dimen/_40sdp"
+        app:itemRadius="@dimen/_8sdp"
+        app:itemSpacing="@dimen/_8sdp"
+        app:lineColor="@color/grayColor"
+        android:itemBackground="@drawable/edittext_bg"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/nextButton"

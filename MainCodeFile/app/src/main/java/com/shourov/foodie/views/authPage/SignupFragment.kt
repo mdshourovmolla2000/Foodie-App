@@ -8,16 +8,16 @@ import android.text.TextPaint
 import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.shourov.foodie.R
 import com.shourov.foodie.databinding.FragmentSignupBinding
 import com.shourov.foodie.utils.NavigationHelper
+import com.shourov.foodie.utils.showSuccessToast
 import com.shourov.foodie.utils.showWarningToast
 
 class SignupFragment : Fragment() {
@@ -46,7 +46,8 @@ class SignupFragment : Fragment() {
 
             signupButton.setOnClickListener {
                 if (isTermsChecked) {
-
+                    requireContext().showSuccessToast("Account created successfully")
+                    NavigationHelper.navigateTo(findNavController(), R.id.action_signupFragment_to_loginFragment)
                 } else {
                     requireContext().showWarningToast("Please accept the terms & conditions")
                 }

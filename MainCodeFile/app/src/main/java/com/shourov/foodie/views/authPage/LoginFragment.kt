@@ -1,5 +1,7 @@
 package com.shourov.foodie.views.authPage
 
+import android.app.ActivityOptions
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
@@ -18,6 +20,8 @@ import androidx.navigation.fragment.findNavController
 import com.shourov.foodie.R
 import com.shourov.foodie.databinding.FragmentLoginBinding
 import com.shourov.foodie.utils.NavigationHelper
+import com.shourov.foodie.utils.showSuccessToast
+import com.shourov.foodie.views.MainActivity
 
 class LoginFragment : Fragment() {
 
@@ -36,6 +40,14 @@ class LoginFragment : Fragment() {
             backButton.setOnClickListener { findNavController().popBackStack() }
 
             forgotPasswordButton.setOnClickListener { NavigationHelper.navigateTo(findNavController(), R.id.action_loginFragment_to_forgotPasswordFragment) }
+
+            loginButton.setOnClickListener {
+                requireContext().showSuccessToast("Successfully logged in")
+                val intent = Intent(requireActivity(), MainActivity::class.java)
+                val options = ActivityOptions.makeCustomAnimation(requireContext(), R.anim.enter, R.anim.exit)
+                startActivity(intent, options.toBundle())
+                requireActivity().finish()
+            }
         }
 
         return binding.root

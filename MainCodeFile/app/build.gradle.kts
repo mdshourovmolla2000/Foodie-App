@@ -58,4 +58,7 @@ dependencies {
 
     //Toasty
     implementation(libs.toasty)
+
+    //PinView
+    implementation(libs.pinview)
 }
