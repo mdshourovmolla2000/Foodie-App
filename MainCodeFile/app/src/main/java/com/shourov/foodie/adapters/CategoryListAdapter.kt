@@ -13,10 +13,16 @@ import com.shourov.foodie.interfaces.CategoryItemClickListener
 import com.shourov.foodie.model.CategoryModel
 import com.shourov.foodie.utils.loadImage
 
-class CategoryListAdapter(private val itemList: ArrayList<CategoryModel>, currentCategoryPosition: Int, private val itemClickListener: CategoryItemClickListener):
+class CategoryListAdapter(private var itemList: MutableList<CategoryModel>, private val itemClickListener: CategoryItemClickListener):
     RecyclerView.Adapter<CategoryListAdapter.ItemViewHolder>() {
 
-    private var currentIndex = currentCategoryPosition
+    private var currentIndex = 0 // Default to the first item
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun submitList(itemList: MutableList<CategoryModel>) {
+        this.itemList = itemList
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.single_category_item_layout, parent, false)
@@ -48,12 +54,17 @@ class CategoryListAdapter(private val itemList: ArrayList<CategoryModel>, curren
                     categoryIconImageview.setColorFilter(ContextCompat.getColor(itemView.context, R.color.grayColor), PorterDuff.Mode.SRC_IN)
                     categoryNameTextview.setTextColor(ContextCompat.getColor(itemView.context, R.color.grayColor))
                 }
-            }
 
-            itemView.setOnClickListener {
-                currentIndex = position
-                itemClickListener.onClickCategoryItem(currentItem.categoryName, position)
-                notifyDataSetChanged()
+                itemCardView.setOnClickListener {
+                    if (currentIndex != position) {
+                        val previousIndex = currentIndex
+                        currentIndex = position
+                        itemClickListener.onClickCategoryItem(currentItem.categoryName)
+
+                        notifyItemChanged(previousIndex)
+                        notifyItemChanged(currentIndex)
+                    }
+                }
             }
         }
     }

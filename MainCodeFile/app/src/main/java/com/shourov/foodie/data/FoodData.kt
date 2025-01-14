@@ -4,8 +4,8 @@ import com.shourov.foodie.R
 import com.shourov.foodie.model.FoodModel
 
 class FoodData {
-    fun getData(): List<FoodModel> {
-        val itemList: ArrayList<FoodModel> = ArrayList()
+    fun getData(): MutableList<FoodModel> {
+        val itemList: MutableList<FoodModel> = mutableListOf()
         itemList.add(FoodModel("1", R.drawable.food_pizza_maxicana_image, "Pizza maxicana", "Fast food", "Lorem ipsum dolor sit amet . The graphic and typographic operators know this well, in reality all the professions dealing with the universe of communication have a stable relationship with these words, but what is it? Lorem ipsum is a dummy text without any sense.", "20 min", 50.00, 4.2))
         itemList.add(FoodModel("2", R.drawable.food_burger_image, "Burger", "Fast food", "Lorem ipsum dolor sit amet . The graphic and typographic operators know this well, in reality all the professions dealing with the universe of communication have a stable relationship with these words, but what is it? Lorem ipsum is a dummy text without any sense.", "10 min", 40.00, 4.5))
         itemList.add(FoodModel("3", R.drawable.food_sandwich_image, "Sandwich", "Fast food", "Lorem ipsum dolor sit amet . The graphic and typographic operators know this well, in reality all the professions dealing with the universe of communication have a stable relationship with these words, but what is it? Lorem ipsum is a dummy text without any sense.", "10 min", 35.00, 3.8))

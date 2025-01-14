@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -16,7 +16,6 @@ import com.shourov.foodie.common.BaseFragment
 import com.shourov.foodie.databinding.FragmentHomeBinding
 import com.shourov.foodie.interfaces.CategoryItemClickListener
 import com.shourov.foodie.interfaces.FoodItemClickListener
-import com.shourov.foodie.model.CategoryModel
 import com.shourov.foodie.model.FoodModel
 import com.shourov.foodie.repository.HomeRepository
 import com.shourov.foodie.utils.NavigationHelper
@@ -28,14 +27,13 @@ class HomeFragment : BaseFragment(), CategoryItemClickListener, FoodItemClickLis
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var repository: HomeRepository
-    private lateinit var viewModel: HomeViewModel
+    private val viewModel: HomeViewModel by viewModels { HomeViewModelFactory(HomeRepository()) }
 
-    private val categoryList = ArrayList<CategoryModel>()
-    private var currentCategoryPosition = 0
     private var currentCategory = "All"
 
-    private val foodList = ArrayList<FoodModel>()
+    private val categoryListAdapter by lazy { CategoryListAdapter(mutableListOf(), this) }
+    private val foodListAdapter by lazy { FoodListAdapter(mutableListOf(), this) }
+
     private var scrollPosition = 0
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -64,16 +62,12 @@ class HomeFragment : BaseFragment(), CategoryItemClickListener, FoodItemClickLis
         }
         updateTitle("")
 
-
-        repository = HomeRepository()
-        viewModel = ViewModelProvider(this, HomeViewModelFactory(repository))[HomeViewModel::class.java]
-
         getCategoryData()
 
         binding.apply {
             searchCardView.setOnClickListener { NavigationHelper.navigateTo(findNavController(), R.id.action_homeFragment_to_searchFragment) }
-            categoryListRecyclerview.adapter = CategoryListAdapter(categoryList, currentCategoryPosition, this@HomeFragment)
-            foodListRecyclerview.adapter = FoodListAdapter(foodList, this@HomeFragment)
+            categoryListRecyclerview.adapter = categoryListAdapter
+            foodListRecyclerview.adapter = foodListAdapter
         }
     }
 
@@ -88,10 +82,7 @@ class HomeFragment : BaseFragment(), CategoryItemClickListener, FoodItemClickLis
                         requireContext().showErrorToast(message)
                     }
                     "Successful" -> {
-                        categoryList.clear()
-                        if (!data.isNullOrEmpty()) { categoryList.addAll(data) }
-
-                        categoryListRecyclerview.adapter?.notifyDataSetChanged()
+                        categoryListAdapter.submitList(data!!)
                         getPopularProductData(currentCategory)
                     }
                 }
@@ -106,22 +97,16 @@ class HomeFragment : BaseFragment(), CategoryItemClickListener, FoodItemClickLis
                     "Something wrong" -> requireContext().showErrorToast(message)
                     "Network error" -> requireContext().showErrorToast(message)
                     "Successful" -> {
-                        foodList.clear()
-                        foodList.addAll(data!!)
-
-                        foodListRecyclerview.adapter?.notifyDataSetChanged()
+                        foodListAdapter.submitList(data!!)
                     }
                 }
             }
         }
     }
 
-    override fun onClickCategoryItem(currentItem: String, currentItemPosition: Int) {
-        if (currentCategoryPosition != currentItemPosition) {
-            currentCategoryPosition = currentItemPosition
-            currentCategory = currentItem
-            getPopularProductData(currentCategory)
-        }
+    override fun onClickCategoryItem(currentItem: String) {
+        currentCategory = currentItem
+        getPopularProductData(currentCategory)
     }
 
     override fun onClickFoodItem(currentItem: FoodModel) {

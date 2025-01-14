@@ -8,7 +8,8 @@ import com.shourov.foodie.repository.HomeRepository
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repository: HomeRepository): ViewModel() {
-    fun getCategoryData(callback: (data: List<CategoryModel>?, message: String?) -> Unit) = viewModelScope.launch { repository.getCategoryData(callback) }
 
-    fun getFoodData(categoryName: String, callback: (data: List<FoodModel>?, message: String?) -> Unit) = viewModelScope.launch { repository.getFoodData(categoryName, callback) }
+    fun getCategoryData(callback: (data: MutableList<CategoryModel>?, message: String?) -> Unit) = viewModelScope.launch { repository.getCategoryData(callback) }
+
+    fun getFoodData(categoryName: String, callback: (data: MutableList<FoodModel>?, message: String?) -> Unit) = viewModelScope.launch { repository.getFoodData(categoryName, callback) }
 }

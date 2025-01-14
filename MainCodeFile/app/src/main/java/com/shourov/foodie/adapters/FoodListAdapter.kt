@@ -11,8 +11,14 @@ import com.shourov.foodie.interfaces.FoodItemClickListener
 import com.shourov.foodie.model.FoodModel
 import com.shourov.foodie.utils.loadImage
 
-class FoodListAdapter(private val itemList: ArrayList<FoodModel>, private val listener: FoodItemClickListener):
+class FoodListAdapter(private var itemList: MutableList<FoodModel>, private val listener: FoodItemClickListener):
     RecyclerView.Adapter<FoodListAdapter.ItemViewHolder>() {
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun submitList(itemList: MutableList<FoodModel>) {
+        this.itemList = itemList
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.single_food_item_layout, parent, false)

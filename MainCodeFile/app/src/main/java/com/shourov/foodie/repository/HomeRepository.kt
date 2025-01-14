@@ -8,7 +8,8 @@ import java.io.IOException
 import java.net.SocketException
 
 class HomeRepository {
-    fun getCategoryData(callback: (data: List<CategoryModel>?, message: String?) -> Unit) {
+
+    fun getCategoryData(callback: (data: MutableList<CategoryModel>?, message: String?) -> Unit) {
         try {
             val response = CategoryData().getData()
 
@@ -19,12 +20,12 @@ class HomeRepository {
         catch (e: Exception) { callback(null, "Something wrong") }
     }
 
-    fun getFoodData(categoryName: String, callback: (data: List<FoodModel>?, message: String?) -> Unit) {
+    fun getFoodData(categoryName: String, callback: (data: MutableList<FoodModel>?, message: String?) -> Unit) {
         try {
             val response = if (categoryName == "All") {
-                FoodData().getData().asReversed()
+                FoodData().getData().asReversed().toMutableList()
             } else {
-                FoodData().getData().asReversed().filter { it.itemCategory == categoryName }
+                FoodData().getData().asReversed().filter { it.itemCategory == categoryName }.toMutableList()
             }
 
             callback(response, "Successful")
