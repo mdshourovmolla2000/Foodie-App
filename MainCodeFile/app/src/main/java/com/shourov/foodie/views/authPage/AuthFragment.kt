@@ -12,21 +12,30 @@ import com.shourov.foodie.utils.NavigationHelper
 
 class AuthFragment : Fragment() {
 
-    private lateinit var binding: FragmentAuthBinding
+    private var _binding: FragmentAuthBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentAuthBinding.inflate(inflater, container, false)
+        _binding = FragmentAuthBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
             loginButton.setOnClickListener { NavigationHelper.navigateTo(findNavController(), R.id.action_authFragment_to_loginFragment) }
 
             signupButton.setOnClickListener { NavigationHelper.navigateTo(findNavController(), R.id.action_authFragment_to_signupFragment) }
         }
+    }
 
-        return binding.root
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

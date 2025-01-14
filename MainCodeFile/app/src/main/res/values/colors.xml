@@ -15,4 +15,6 @@
     <color name="navigationViewTextColor">#252525</color>
 
     <color name="dividerLineColor">#C8C8C8</color>
+
+    <color name="categoryBackgroundColor">#f2f0fe</color>
 </resources>

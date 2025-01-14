@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_5sdp"
+    app:cardBackgroundColor="@color/whiteColor"
+    app:cardCornerRadius="@dimen/_12sdp"
+    app:cardElevation="@dimen/_4sdp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:id="@+id/itemCardView">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_12sdp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/circularImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/food_fish_finger_image"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_gravity="center_horizontal"
+            android:elevation="@dimen/_8sdp"
+            app:shapeAppearanceOverlay="@style/CircleImageViewStyle" />
+
+        <TextView
+            android:id="@+id/itemNameTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="Food Name"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/_14sdp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:fontFamily="@font/nort"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_gravity="center_horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_15sdp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/rating_icon"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:id="@+id/ratingCountTextview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5.0"
+                android:textColor="@color/grayColor"
+                android:textSize="@dimen/_14sdp"
+                android:fontFamily="@font/nort"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_8sdp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/itemPriceTextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="$ 15.00"
+            android:textColor="@color/themeColor"
+            android:textSize="@dimen/_20sdp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:fontFamily="@font/nort"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

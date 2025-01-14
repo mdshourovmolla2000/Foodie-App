@@ -64,6 +64,15 @@ class MainActivity : AppCompatActivity() {
                 backButton.visibility = if (currentFragmentId == R.id.homeFragment) View.GONE else View.VISIBLE
 
                 profilePic.visibility = if (currentFragmentId == R.id.homeFragment) View.VISIBLE else View.GONE
+
+                bottomNavigationMenuLayout.visibility = when (currentFragmentId) {
+                    R.id.homeFragment,
+                    R.id.favoriteFragment,
+                    R.id.cartFragment,
+                    R.id.notificationFragment,
+                    R.id.profileFragment -> View.VISIBLE
+                    else -> View.GONE
+                }
             }
         }
 

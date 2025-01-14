@@ -10,19 +10,28 @@ import com.shourov.foodie.databinding.FragmentTermsBinding
 
 class TermsFragment : Fragment() {
 
-    private lateinit var binding: FragmentTermsBinding
+    private var _binding: FragmentTermsBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentTermsBinding.inflate(inflater, container, false)
+        _binding = FragmentTermsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
             backButton.setOnClickListener { findNavController().popBackStack() }
         }
+    }
 
-        return binding.root
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

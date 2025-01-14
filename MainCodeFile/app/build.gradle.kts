@@ -61,4 +61,8 @@ dependencies {
 
     //PinView
     implementation(libs.pinview)
+
+    //Glide image library
+    implementation(libs.glide)
+    annotationProcessor(libs.compiler)
 }

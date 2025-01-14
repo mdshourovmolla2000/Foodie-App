@@ -12,22 +12,30 @@ import com.shourov.foodie.utils.NavigationHelper
 
 class ForgotPasswordFragment : Fragment() {
 
-    private lateinit var binding: FragmentForgotPasswordBinding
+    private var _binding: FragmentForgotPasswordBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentForgotPasswordBinding.inflate(inflater, container, false)
+        _binding = FragmentForgotPasswordBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
             backButton.setOnClickListener { findNavController().popBackStack() }
 
             nextButton.setOnClickListener { NavigationHelper.navigateTo(findNavController(), R.id.action_forgotPasswordFragment_to_verificationFragment) }
         }
+    }
 
-
-        return binding.root
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

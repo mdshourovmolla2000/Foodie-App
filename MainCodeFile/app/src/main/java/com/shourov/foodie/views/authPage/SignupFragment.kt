@@ -22,7 +22,8 @@ import com.shourov.foodie.utils.showWarningToast
 
 class SignupFragment : Fragment() {
 
-    private lateinit var binding: FragmentSignupBinding
+    private var _binding: FragmentSignupBinding? = null
+    private val binding get() = _binding!!
     private var isTermsChecked = false
 
     override fun onCreateView(
@@ -30,7 +31,12 @@ class SignupFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentSignupBinding.inflate(inflater, container, false)
+        _binding = FragmentSignupBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         loginText()
         termsText()
@@ -53,8 +59,6 @@ class SignupFragment : Fragment() {
                 }
             }
         }
-
-        return binding.root
     }
 
     private fun loginText() {
@@ -143,5 +147,10 @@ class SignupFragment : Fragment() {
             movementMethod = LinkMovementMethod.getInstance() // Ensure the link is clickable
             highlightColor = Color.TRANSPARENT
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
