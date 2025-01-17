@@ -8,7 +8,7 @@ import com.shourov.foodie.model.FoodModel
 import java.io.IOException
 import java.net.SocketException
 
-class HomeRepository {
+class SearchRepository {
 
     fun getCategoryData(callback: (data: MutableList<CategoryModel>?, message: String?) -> Unit) {
         try {
@@ -22,12 +22,18 @@ class HomeRepository {
         catch (e: Exception) { callback(null, "Something wrong") }
     }
 
-    fun getFoodData(categoryName: String, callback: (data: MutableList<FoodModel>?, message: String?) -> Unit) {
+    fun getFoodData(foodName: String, categoryName: String, minPrice: Double, maxPrice: Double, callback: (data: MutableList<FoodModel>?, message: String?) -> Unit) {
         try {
+            if (foodName.isBlank()) {
+                callback(mutableListOf(), "Successful")
+                return
+            }
+
             val allData = FoodData().getData()
-            val filteredData = when (categoryName) {
-                "All" -> allData
-                else -> allData.filter { it.itemCategory == categoryName }
+            val filteredData = allData.filter { foodItem ->
+                (categoryName == "All" || foodItem.itemCategory.equals(categoryName, ignoreCase = true)) &&
+                        ((foodItem.itemPrice ?: 0.0) in minPrice..maxPrice) &&
+                        (foodItem.itemName?.contains(foodName, ignoreCase = true) == true)
             }.asReversed().toMutableList()
 
             callback(filteredData, "Successful")

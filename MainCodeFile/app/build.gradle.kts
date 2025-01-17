@@ -65,4 +65,8 @@ dependencies {
     //Glide image library
     implementation(libs.glide)
     annotationProcessor(libs.compiler)
+
+    //Recyclerview layout manager
+    implementation(libs.flexbox)
+
 }

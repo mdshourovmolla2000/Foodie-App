@@ -19,19 +19,13 @@
             android:adjustViewBounds="true"/>
 
         <ImageView
+            android:id="@+id/logoImageView"
             android:layout_width="@dimen/_130sdp"
             android:layout_height="wrap_content"
             android:src="@drawable/app_logo"
             android:adjustViewBounds="true"
-            android:layout_centerInParent="true"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/topSection"
-        android:padding="@dimen/_12sdp">
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_150sdp"/>
 
         <TextView
             android:id="@+id/wlcTextview"
@@ -41,7 +35,9 @@
             android:textColor="@color/themeColor"
             android:textSize="@dimen/_20sdp"
             android:fontFamily="@font/nort"
-            android:layout_centerHorizontal="true" />
+            android:layout_below="@id/logoImageView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -52,7 +48,15 @@
             android:fontFamily="@font/nort"
             android:layout_below="@id/wlcTextview"
             android:gravity="center_horizontal"
+            android:padding="@dimen/_12sdp"
             android:layout_marginTop="@dimen/_12sdp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_12sdp">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/loginButton"

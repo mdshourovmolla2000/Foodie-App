@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/_12sdp"
+    android:background="@drawable/bottom_sheet_rounded_corner_background">
+
+    <View
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_4sdp"
+        android:background="#bcbcbc"
+        android:layout_gravity="center_horizontal"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:layout_marginTop="@dimen/_13sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Filters"
+                android:textColor="@color/themeColor"
+                android:textSize="@dimen/_16sdp"
+                android:fontFamily="@font/nort"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price Range"
+                    android:textColor="@color/blackColor"
+                    android:textSize="@dimen/_12sdp"
+                    android:fontFamily="@font/nort"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true" />
+
+                <TextView
+                    android:id="@+id/priceRangeTextview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Price Range"
+                    android:textColor="@color/themeColor"
+                    android:textSize="@dimen/_13sdp"
+                    android:fontFamily="@font/nort"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true" />
+
+            </RelativeLayout>
+
+            <com.google.android.material.slider.RangeSlider
+                android:id="@+id/priceRangeSlider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:valueFrom="0.0"
+                android:valueTo="100.0"
+                android:stepSize="5.0"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category"
+                android:textColor="@color/blackColor"
+                android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/nort"
+                android:layout_marginTop="@dimen/_12sdp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/filterCategoryListRecyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                tools:listitem="@layout/single_filter_category_item_layout"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/_12sdp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/clearAllButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Clear All"
+                    android:textColor="@color/themeColor"
+                    android:textSize="@dimen/_15sdp"
+                    android:fontFamily="@font/nort"
+                    app:backgroundTint="@color/whiteColor"
+                    app:strokeColor="@color/themeColor"
+                    app:strokeWidth="@dimen/_1sdp"
+                    app:cornerRadius="@dimen/_10sdp"
+                    android:insetBottom="0dp"
+                    android:insetLeft="0dp"
+                    android:insetRight="0dp"
+                    android:insetTop="0dp"
+                    android:padding="@dimen/_12sdp"/>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/applyButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Apply"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/_15sdp"
+                    android:fontFamily="@font/nort"
+                    app:backgroundTint="@color/themeColor"
+                    app:cornerRadius="@dimen/_10sdp"
+                    android:insetBottom="0dp"
+                    android:insetLeft="0dp"
+                    android:insetRight="0dp"
+                    android:insetTop="0dp"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:padding="@dimen/_12sdp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

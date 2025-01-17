@@ -16,6 +16,7 @@ import com.shourov.foodie.common.BaseFragment
 import com.shourov.foodie.databinding.FragmentHomeBinding
 import com.shourov.foodie.interfaces.CategoryItemClickListener
 import com.shourov.foodie.interfaces.FoodItemClickListener
+import com.shourov.foodie.model.CategoryModel
 import com.shourov.foodie.model.FoodModel
 import com.shourov.foodie.repository.HomeRepository
 import com.shourov.foodie.utils.NavigationHelper
@@ -104,8 +105,8 @@ class HomeFragment : BaseFragment(), CategoryItemClickListener, FoodItemClickLis
         }
     }
 
-    override fun onClickCategoryItem(currentItem: String) {
-        currentCategory = currentItem
+    override fun onClickCategoryItem(currentItem: CategoryModel) {
+        currentCategory = currentItem.categoryName
         getPopularProductData(currentCategory)
     }
 

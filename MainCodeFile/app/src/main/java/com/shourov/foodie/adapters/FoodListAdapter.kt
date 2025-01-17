@@ -41,9 +41,9 @@ class FoodListAdapter(private var itemList: MutableList<FoodModel>, private val 
                 itemNameTextview.text = currentItem.itemName
                 ratingCountTextview.text = currentItem.itemRating.toString()
                 itemPriceTextview.text = "$ ${currentItem.itemPrice}"
-            }
 
-            itemView.setOnClickListener { listener.onClickFoodItem(currentItem) }
+                itemCardView.setOnClickListener { listener.onClickFoodItem(currentItem) }
+            }
         }
     }
 }
